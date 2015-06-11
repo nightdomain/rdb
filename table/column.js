@@ -16,6 +16,11 @@ function defineColumn(column, table) {
 		return c;
 	};
 
+	c.dateString = function() {
+		require('./column/dateString')(column);
+		return c;
+	};
+
 	c.numeric = function(optionalPrecision,optionalScale) {
 		require('./column/numeric')(column,optionalPrecision,optionalScale);
 		return c;

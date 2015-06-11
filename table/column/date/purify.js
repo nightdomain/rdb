@@ -1,11 +1,17 @@
-function purify(value) {		
-	
-	if(value == null)
-		return null;
+var tryParseISO = require('./tryParseISO');
 
-	if (! (value.toISOString))
+function purify(value) {			
+	if(value == null)
+		return null;	
+
+	if (value.toISOString) 
 		return new Date(value);
-	return value;
+
+	var iso = tryParseISO(value);
+	if (iso)
+		return iso;	
+	
+	return new Date(value);
 }
 
 module.exports = purify;
