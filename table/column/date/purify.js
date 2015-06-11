@@ -1,17 +1,18 @@
 var tryParseISO = require('./tryParseISO');
+var cloneDate = require('./cloneDate');
 
 function purify(value) {			
 	if(value == null)
 		return null;	
 
 	if (value.toISOString) 
-		return new Date(value);
+		return cloneDate(value);
 
 	var iso = tryParseISO(value);
 	if (iso)
 		return iso;	
 	
-	return new Date(value);
+	return cloneDate(value);
 }
 
 module.exports = purify;
